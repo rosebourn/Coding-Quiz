@@ -1,0 +1,13 @@
+h1 {
+text-align: center;
+}
+
+.container {
+    background: grey;
+    height: 500px;
+}
+
+.instructions {
+    text-align: center;
+}
+
