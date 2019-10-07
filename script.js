@@ -1,5 +1,5 @@
 var timeEl = document.querySelector("#counter");
-var questionsEl = document.querySelector(".questions-rendered");
+var questionsEl = document.querySelector("#question-rendered");
 
 var secondsLeft = 75;
 var timerInterval;
@@ -26,16 +26,59 @@ startBtn.addEventListener('click', function()
     displayQuestions();
 })
 
-function displayQuestions() {
+var questionIndex = 0;
+
+/*function displayQuestions() {
     questionsEl.textContent = "";
     var question = questions[questionIndex];
     var questionDiv = document.createElement("div");
     var questionText = document.createElement("p");
    
-    questionText.textContent = question.title; 
-    questionDiv.appendChild(questionText)
+    questionText.textContent = questions.title; 
+    questionDiv.appendChild(questionText);
 
-    function nextQuestion(questionNumber) {
+    for (i=0; i < question.choices.length; i++) {
+        var answer = document.createElement("button");
+        answer.textContent = question.choices[i];
+        answer.setAttribute("class", "answer");
+        answer.addEventListener("click", function() {
+            alert("clicked on an answer");
+        }
+        )
+    }
+    questionsDiv.appendChild(answer);
+} */
+
+
+function displayQuestions(i) {
+    questionsEl.textContent = questions[i].title;
+    choice1.textContent = questions[i].choices[0];
+    choice2.textContent = questions[i].choices[1];
+    choice3.textContent = questions[i].choices[2];
+    choice4.textContent = questions[i].choices[3];
+
+}
+console.log(questions);
+     /*for (i=0; i < question.choices.length; i++) {
+        var answer = document.createElement("button");
+        answer.textContent = question.choices[i];
+        answer.setAttribute("class", "answer");
+        answer.addEventListener("click", function() {
+            alert("clicked on an answer");
+        }
+        )
+    }
+    questionsDiv.appendChild(answer);*/
+
+
+
+
+/*let lastQuestionIndex = questions.length - 1;
+let runningQuestionIndex = 0;
+
+
+
+    /*function nextQuestion(questionNumber) {
         var option = document.createElement("button");
         option.textContent = question.choices[i];
         option.setAttribute("class", "answer");
@@ -52,32 +95,6 @@ function displayQuestions() {
         })
 
         questionDiv.appendChild(answer);
-    }
-        // for each answer, all of the below steps happen:
-
-        // creating a new button element and store it in the 'answer' variable
-       
-        // adding a click event for the newly-created button
-
-            // YOUR LOGIC GOES HERE:
-                // 1) get the answer the user clicked on and compare it to the correct answer
-                //adding a click event for the newly-created button
-               
-                
-                // 2) likely add to correct/incorrect counters
-                // 3) increment 'questionIndex', to change pointer to next question
-                // 4) call 'displayQuestions' function, which will then render the next question
-                // 5) potentially reset timer? (or is timer for all questions?)
-                // 6) consider moving this functionality into a separate function, maybe?
+    } */
         
-        // then adding the new button (containing the answer text) to the wrapper div
-      
-    }
-
-    // by the time you reach this point in the code, you now have a question wrapper div
-    // ('questionDiv') that contains a paragraph containing the question, and four buttons
-    // containing the answers...
-
-    // the next step is putting the wrapper div on the page!
-    questionsEl.appendChild(questionDiv);
 
