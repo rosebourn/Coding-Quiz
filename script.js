@@ -2,7 +2,7 @@ var timeEl = document.querySelector("#counter");
 var questionsEl = document.querySelector(".instructions");
 var resultsEl = document.querySelector(".results");
 var highscoresEl = document.querySelector(".highscores"); 
-
+var buttonEl = document.querySelector(".choices")
 var secondsLeft = 75;
 var timerInterval;
 
@@ -34,12 +34,22 @@ var questionIndex = 0;
 function displayQuestions() {
     questionsEl.textContent = "";
     var question = questions[questionIndex];
-    var questionDiv = document.createElement("div");
+    var choiceButton1 = document.createElement("button");
+    var choiceButton2 = document.createElement("button");
+    var choiceButton3 = document.createElement("button");
+    var choiceButton4 = document.createElement("button");
     var questionText = document.createElement("p");
    
     questionText.textContent = question.title; 
-    questionDiv.textContent = question.choices;
+    choiceButton1.textContent = question.choices[0];
+    choiceButton2.textContent = question.choices[1];
+    choiceButton3.textContent = question.choices[2];
+    choiceButton4.textContent = question.choices[3];
     questionsEl.appendChild(questionText);
+    buttonEl.appendChild(choiceButton1);
+    buttonEl.appendChild(choiceButton2);
+    buttonEl.appendChild(choiceButton3);
+    buttonEl.appendChild(choiceButton4);
 }
 
 /*questionText.appendChild(questionDiv);
