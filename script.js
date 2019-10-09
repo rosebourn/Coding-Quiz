@@ -1,5 +1,7 @@
 var timeEl = document.querySelector("#counter");
-var questionsEl = document.querySelector("#question-rendered");
+var questionsEl = document.querySelector(".instructions");
+var resultsEl = document.querySelector(".results");
+var highscoresEl = document.querySelector(".highscores"); 
 
 var secondsLeft = 75;
 var timerInterval;
@@ -28,6 +30,20 @@ startBtn.addEventListener('click', function()
 
 var questionIndex = 0;
 
+
+function displayQuestions() {
+    questionsEl.textContent = "";
+    var question = questions[questionIndex];
+    var questionDiv = document.createElement("div");
+    var questionText = document.createElement("p");
+   
+    questionText.textContent = question.title; 
+    questionDiv.textContent = question.choices;
+    questionsEl.appendChild(questionText);
+}
+
+/*questionText.appendChild(questionDiv);
+document.body.appendChild(questionText);
 /*function displayQuestions() {
     questionsEl.textContent = "";
     var question = questions[questionIndex];
@@ -50,15 +66,7 @@ var questionIndex = 0;
 } */
 
 
-function displayQuestions(i) {
-    questionsEl.textContent = questions[i].title;
-    choice1.textContent = questions[i].choices[0];
-    choice2.textContent = questions[i].choices[1];
-    choice3.textContent = questions[i].choices[2];
-    choice4.textContent = questions[i].choices[3];
 
-}
-console.log(questions);
      /*for (i=0; i < question.choices.length; i++) {
         var answer = document.createElement("button");
         answer.textContent = question.choices[i];
