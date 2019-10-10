@@ -2,7 +2,8 @@ var timeEl = document.querySelector("#counter");
 var questionsEl = document.querySelector(".instructions");
 var resultsEl = document.querySelector(".results");
 var highscoresEl = document.querySelector(".highscores"); 
-var buttonEl = document.querySelector(".choices")
+var buttonEl = document.querySelector(".choices");
+
 var secondsLeft = 75;
 var timerInterval;
 
@@ -30,7 +31,6 @@ startBtn.addEventListener('click', function()
 
 var questionIndex = 0;
 
-
 function displayQuestions() {
     questionsEl.textContent = "";
     var question = questions[questionIndex];
@@ -39,18 +39,74 @@ function displayQuestions() {
     var choiceButton3 = document.createElement("button");
     var choiceButton4 = document.createElement("button");
     var questionText = document.createElement("p");
-   
-    questionText.textContent = question.title; 
+
+    questionText.textContent = question.title;
     choiceButton1.textContent = question.choices[0];
     choiceButton2.textContent = question.choices[1];
     choiceButton3.textContent = question.choices[2];
     choiceButton4.textContent = question.choices[3];
+
     questionsEl.appendChild(questionText);
     buttonEl.appendChild(choiceButton1);
     buttonEl.appendChild(choiceButton2);
     buttonEl.appendChild(choiceButton3);
     buttonEl.appendChild(choiceButton4);
+
+    buttonEl.addEventListener("click", function(){
+        if (buttonEl === questions[questionIndex].answer) {
+            alert("correct");
+        }
+        else {
+            alert("incorrect")
+        }
+    })
+
+    
 }
+
+//for (i = 0; i < questions.length; i++) {
+
+//}
+    /*var optionClicked = choiceButton1 + choiceButton2 + choiceButton3 + choiceButton4;
+    optionClicked.addEventListener("click", function() {
+    if (optionClicked === questions[questionIndex].answer) {
+        alert("correct");
+    }
+    else {
+        alert("incorrect");
+    }
+})
+
+
+
+
+
+    /*for (i = 0; i < questions.choices.length; i++) {
+        var option = document.createElement("button");
+        option.textContent = question.choices[i];
+        option.setAttribute("class", "answer");
+        option.addEventListener("click", function(){
+            alert("clicked on answer");
+        })
+    }
+}
+
+/*function nextQuestion() {
+        var madeChoice = ""
+        madeChoice.setAttribute("class", "answer");
+        madeChoice.addEventListener("click", function(e) {
+            alert("clicked on an option");
+            var optionClicked = (e.target.innerHTML);
+            if (optionClicked === questions[questionIndex].answer)
+           { 
+               alert("correct");
+           }
+           {
+               alert("incorrect");
+           }
+        })
+    }
+        //questionDiv.appendChild(answer);
 
 /*questionText.appendChild(questionDiv);
 document.body.appendChild(questionText);
@@ -94,25 +150,31 @@ document.body.appendChild(questionText);
 /*let lastQuestionIndex = questions.length - 1;
 let runningQuestionIndex = 0;
 
+var questionIndex = 0;
+var choicesIndex = 0;
+var options = questions.choices[choicesIndex];
 
+function displayQuestions() {
+    questionsEl.textContent = "";
+    var question = questions[questionIndex];
+    //var options = questions.choices[choicesIndex];
+    var questionText = document.createElement("p");
+   
+    questionText.textContent = question.title; 
+    questionsEl.appendChild(questionText);
 
-    /*function nextQuestion(questionNumber) {
-        var option = document.createElement("button");
-        option.textContent = question.choices[i];
-        option.setAttribute("class", "answer");
-        option.addEventListener("click", function(e) {
-            alert("clicked on an option");
-            var optionClicked = (e.target.innerHTML);
-            if (optionClicked === questions[questionIndex].answer)
-           { 
-               alert("correct");
-           }
-           {
-               alert("incorrect");
-           }
-        })
+for (var i=0; i < questions.length; i++) {
+    var button = document.createElement("button");
+    button.textContent = choices[i];
+    options.setAttribute("class", "answer");
+    options.addEventListener("click", function(){
+        alert("clicked on an answer");
+    })
+}
+   
+}
 
-        questionDiv.appendChild(answer);
-    } */
+    
+     */
         
 
