@@ -1,6 +1,6 @@
 var timeEl = document.querySelector("#counter");
 var questionsEl = document.querySelector(".instructions");
-var resultsEl = document.querySelector(".results");
+var resultEl = document.querySelector(".result");
 var highscoresEl = document.querySelector(".highscores"); 
 var buttonEl = document.querySelector(".choices");
 
@@ -30,6 +30,7 @@ startBtn.addEventListener('click', function()
 })
 
 var questionIndex = 0;
+var score = 0;
 
 function displayQuestions() {
     questionsEl.textContent = "";
@@ -52,12 +53,19 @@ function displayQuestions() {
     buttonEl.appendChild(choiceButton3);
     buttonEl.appendChild(choiceButton4);
 
-    buttonEl.addEventListener("click", function(){
-        if (buttonEl === questions[questionIndex].answer) {
-            alert("correct");
+    buttonEl.addEventListener("click", function(e){
+        var optionClicked = (e.target.innerHTML);
+        if (optionClicked === questions[questionIndex].answer) {
+            resultEl.textContent = ("Correct!");
+            score += 5;
+            localStorage.setItem("score", score);
+            console.log(score);
+            questionIndex++;
+           
         }
         else {
-            alert("incorrect")
+            resultEl.textContent = ("Wrong!");
+            questionIndex++;
         }
     })
 
@@ -67,6 +75,8 @@ function displayQuestions() {
 //for (i = 0; i < questions.length; i++) {
 
 //}
+
+
     /*var optionClicked = choiceButton1 + choiceButton2 + choiceButton3 + choiceButton4;
     optionClicked.addEventListener("click", function() {
     if (optionClicked === questions[questionIndex].answer) {
