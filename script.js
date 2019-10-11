@@ -1,3 +1,4 @@
+console.log(questions);
 var timeEl = document.querySelector("#counter");
 var questionsEl = document.querySelector(".instructions");
 var resultEl = document.querySelector(".result");
@@ -24,6 +25,7 @@ function setTime()
 const startBtn = document.getElementById("start");
 startBtn.addEventListener('click', function()
 {
+    console.log("start");
     setTime();
     startBtn.style.display = 'none';
     displayQuestions();
@@ -33,6 +35,10 @@ var questionIndex = 0;
 var score = 0;
 
 function displayQuestions() {
+   while (buttonEl.firstChild) {
+       buttonEl.firstChild.remove();
+   }
+   console.log(questionIndex);
     questionsEl.textContent = "";
     var question = questions[questionIndex];
     var choiceButton1 = document.createElement("button");
@@ -40,7 +46,7 @@ function displayQuestions() {
     var choiceButton3 = document.createElement("button");
     var choiceButton4 = document.createElement("button");
     var questionText = document.createElement("p");
-
+    console.log(question.title, question.choices);
     questionText.textContent = question.title;
     choiceButton1.textContent = question.choices[0];
     choiceButton2.textContent = question.choices[1];
@@ -55,26 +61,41 @@ function displayQuestions() {
 
     buttonEl.addEventListener("click", function(e){
         var optionClicked = (e.target.innerHTML);
+        console.log(optionClicked);
         if (optionClicked === questions[questionIndex].answer) {
             resultEl.textContent = ("Correct!");
             score += 5;
             localStorage.setItem("score", score);
             console.log(score);
-            displayQuestions(questionIndex++);
+            if (questionIndex === questions.length - 1) {
+                results()
+            }
+            else {
+                displayQuestions(questionIndex++);
+            }
+           
            
         }
         else {
             resultEl.textContent = ("Wrong!");
-            displayQuestions(questionIndex++);
+             if (questionIndex === questions.length - 1) {
+                results()
+            }
+            else {
+                displayQuestions(questionIndex++);
+            }
         }
     })
-
-    
 }
 
-//for (i = 0; i < questions.length; i++) {
+function results() {
+    clearInterval(timerInterval);
+    //ask for name and save in local storage
+    //create form to get name
+    //show name with other high scores
+    console.log("this is results");
+}
 
-//}
 
 
     /*for (i = 0; i < questions.choices.length; i++) {
