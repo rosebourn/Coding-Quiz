@@ -60,12 +60,12 @@ function displayQuestions() {
             score += 5;
             localStorage.setItem("score", score);
             console.log(score);
-            questionIndex++;
+            displayQuestions(questionIndex++);
            
         }
         else {
             resultEl.textContent = ("Wrong!");
-            questionIndex++;
+            displayQuestions(questionIndex++);
         }
     })
 
@@ -75,20 +75,6 @@ function displayQuestions() {
 //for (i = 0; i < questions.length; i++) {
 
 //}
-
-
-    /*var optionClicked = choiceButton1 + choiceButton2 + choiceButton3 + choiceButton4;
-    optionClicked.addEventListener("click", function() {
-    if (optionClicked === questions[questionIndex].answer) {
-        alert("correct");
-    }
-    else {
-        alert("incorrect");
-    }
-})
-
-
-
 
 
     /*for (i = 0; i < questions.choices.length; i++) {
