@@ -64,12 +64,19 @@ function response() {
    }
    else {
        resultEl.textContent = ("Wrong!");
+       secondsLeft -= 15;
+
    }
-   if (questionIndex === questions.length - 1) {
-       results()
+   if (questionIndex === questions.length - 1 || secondsLeft === 0) {
+       results();
+
    }
    else {
        displayQuestions(questionIndex++);
    }
 }
+}
+
+function results() {
+   
 }
